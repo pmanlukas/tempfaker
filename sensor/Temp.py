@@ -4,7 +4,9 @@ import random
 import time
 from Adafruit_BME280 import *
 
-##init sensor
+#this is just a simple comment
+
+#init sensor
 sensor = BME280(t_mode=BME280_OSAMPLE_8, p_mode=BME280_OSAMPLE_8, h_mode=BME280_OSAMPLE_8)
 
 ##variables
