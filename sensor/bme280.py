@@ -1,8 +1,7 @@
 #Temp Faker by Lukas Pollmann
 ##imports
-import random
+
 import time
-import socket
 import json
 import paho.mqtt.client as mqtt
 from Adafruit_BME280 import *
@@ -13,12 +12,11 @@ sensor = BME280(t_mode=BME280_OSAMPLE_8, p_mode=BME280_OSAMPLE_8, h_mode=BME280_
 ##variables
 inputTrue = True
 shouldRun = False
-#brokerAdress = "192.168.1.1"
+brokerAdress = "broker.hivemq.com"
 
 ##methods
 #create a temperature
 def createTempValue(temp):
-    #TODO: create a random temp value
     temp = sensor.read_temperature()
     return temp
 
@@ -47,7 +45,6 @@ while shouldRun:
     temp = createTempValue(temp)
     data = json.dumps({ "currentValue":temp }, separators=(',',':'))
     print(data)
-    client.publish("/services/7/features/5", data)
-    client.publish("/services/7/features/9", data)
-    time.sleep(1)
+    client.publish("forestfire/temp", data)
+    time.sleep(5)
 
