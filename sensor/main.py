@@ -12,7 +12,7 @@ class sensor():
         self.isMetric = True
         
     def get_temp():
-
+        print("2000 Grad Celsius")
     def get_pressure():
 
     def set_interval(interval):
